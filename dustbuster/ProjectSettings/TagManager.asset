@@ -6,7 +6,7 @@ TagManager:
   tags:
   - dust
   - gamu
-  - dustbox
+
   layers:
   - Default
   - TransparentFX
