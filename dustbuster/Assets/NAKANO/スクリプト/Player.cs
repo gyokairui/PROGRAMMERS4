@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        transform.Rotate(new Vector3(0.0f, 0.0f, 90.0f));
     }
 
     void Update()
