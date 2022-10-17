@@ -10,8 +10,12 @@ public class Player : MonoBehaviour
     public static float moveSpeed=10;//プレイヤースピード
     public static float applySpeed = 0.2f; 
     public static int Score = 0;//スコア
+    public static int DustBOX = 0;
+    public static bool P_dustflag = false;
+
 
     public Slider slider;
+    public Slider slider2;
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -27,9 +31,14 @@ public class Player : MonoBehaviour
 
         //transform.Rotate(new Vector3(0.0f, 0.0f, 0.1f));
 
-        Debug.Log(movement);
+        //Debug.Log(movement);
 
        // if(movement==1.0,0.0)
+
+        if(DustBOX == 3)
+        {
+            Debug.Log("クリア");
+        }
             
     }
 
@@ -53,6 +62,16 @@ public class Player : MonoBehaviour
             Score++;
             Debug.Log(Score);
             slider.value++;
+            P_dustflag = true;
+        }
+
+        if (collision.gameObject.tag == "dustbox")//ゴミ箱に当たると...
+        {
+            slider.value = 0;
+            slider2.value += Score;
+            DustBOX += Score;
+            Score = 0;
+            
         }
 
     }
