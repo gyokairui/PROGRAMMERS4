@@ -9,10 +9,11 @@ public class f_Player : MonoBehaviour
 {
     public static float moveSpeed = 50;//プレイヤースピード
     public static float applySpeed = 0.2f;
+    public static int keyPlayer;
     public static int Score = 0;//スコア
     public float speed;
-
-    public Slider slider;
+    public Slider slider_G; //ゴミ箱のゲージタンク
+    public Slider slider_P; //プレイヤーのタンクゲージ
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -38,6 +39,7 @@ public class f_Player : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+        KeyPlayer();
     }
 
     private void MovePlayer()
@@ -48,27 +50,10 @@ public class f_Player : MonoBehaviour
         //                                         applySpeed);
     }
 
-    //// 物理演算をしたい場合はFixedUpdateを使うのが一般的
-    //void FixedUpdate()
-    //{
-    //    float horizontalKey = Input.GetAxis("Horizontal");
+    private void KeyPlayer()
+    {
 
-    //    //右入力で左向きに動く
-    //    if (horizontalKey > 0)
-    //    {
-    //        rb.velocity = new Vector2(speed, rb.velocity.y);
-    //    }
-    //    //左入力で左向きに動く
-    //    else if (horizontalKey < 0)
-    //    {
-    //        rb.velocity = new Vector2(-speed, rb.velocity.y);
-    //    }
-    //    //ボタンを話すと止まる
-    //    else
-    //    {
-    //        rb.velocity = Vector2.zero;
-    //    }
-    //}
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -76,8 +61,19 @@ public class f_Player : MonoBehaviour
         {
             Score++;
             Debug.Log(Score);
-            slider.value++;
+            slider_P.value++;
         }
 
+        if (collision.gameObject.tag == "dustbox")//ゴミに当たると...
+        {
+            //プレイヤーとゴミ箱が重なったときに、
+            //スペースボタンを押したら吸い込んだゴミをゴミ箱に捨てる。
+            //ゴミ箱に捨てたらプレイヤーのタンクゲージは減って、ゴミ箱のゲージは増える。
+            if (Input.GetButton("SPACE"))
+            {
+                slider_G.value++; //ゴミ箱のゲージが増える
+                slider_P.value--; //プレイヤーのタンクゲージが減る
+            }
+        }
     }
 }
