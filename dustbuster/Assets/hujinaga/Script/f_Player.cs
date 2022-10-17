@@ -12,6 +12,7 @@ public class f_Player : MonoBehaviour
     public static int keyPlayer;
     public static int Score = 0;//スコア
     public float speed;
+    public static int DustBOX = 0;
     public Slider slider_G; //ゴミ箱のゲージタンク
     public Slider slider_P; //プレイヤーのタンクゲージ
 
@@ -64,16 +65,25 @@ public class f_Player : MonoBehaviour
             slider_P.value++;
         }
 
-        if (collision.gameObject.tag == "dustbox")//ゴミに当たると...
+        if (collision.gameObject.tag == "dustbox")//ゴミ箱に当たると...
         {
-            //プレイヤーとゴミ箱が重なったときに、
-            //スペースボタンを押したら吸い込んだゴミをゴミ箱に捨てる。
-            //ゴミ箱に捨てたらプレイヤーのタンクゲージは減って、ゴミ箱のゲージは増える。
-            if (Input.GetButton("SPACE"))
-            {
-                slider_G.value++; //ゴミ箱のゲージが増える
-                slider_P.value--; //プレイヤーのタンクゲージが減る
-            }
+            slider_P.value = 0;
+            slider_G.value += Score;
+            DustBOX += Score;
+            Score = 0;
+
         }
+
+        //if (collision.gameObject.tag == "dustbox")//ゴミに当たると...
+        //{
+        //    //プレイヤーとゴミ箱が重なったときに、
+        //    //スペースボタンを押したら吸い込んだゴミをゴミ箱に捨てる。
+        //    //ゴミ箱に捨てたらプレイヤーのタンクゲージは減って、ゴミ箱のゲージは増える。
+        //    if (Input.GetButton("SPACE"))
+        //    {
+        //        slider_G.value++; //ゴミ箱のゲージが増える
+        //        slider_P.value--; //プレイヤーのタンクゲージが減る
+        //    }
+        //}
     }
 }
