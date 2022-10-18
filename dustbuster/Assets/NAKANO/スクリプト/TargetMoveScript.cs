@@ -5,7 +5,7 @@ using UnityEngine;
 public class TargetMoveScript : MonoBehaviour
 {
 	// 速度
-	public Vector2 speed = new Vector2(0.01f, 0.01f);
+	public Vector2 speed = new Vector2(0.00f, 0.00f);
 	// ターゲットとなるオブジェクト
 	public GameObject targetObject;
 	// ラジアン変数
@@ -24,6 +24,7 @@ public class TargetMoveScript : MonoBehaviour
 	{
 		if(dustrange.dustflag==true)
         {
+			//GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 			// ラジアン
 			// atan2(目標方向のy座標 - 初期位置のy座標, 目標方向のx座標 - 初期位置のx座標)
 			// これでラジアンが出る。

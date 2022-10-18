@@ -8,6 +8,11 @@ TagManager:
   - gamu
   - dustrange
   - dustbox
+  - Gamu
+  - 5
+  - 10
+  - 100
+  - 500
   layers:
   - Default
   - TransparentFX
