@@ -9,25 +9,26 @@ public class dustbox : MonoBehaviour
     public static int trash;
     public static dustbox d_box;
     public Slider Slider_G; //ゴミ箱のゲージタンク
+    public static bool dustflag = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")//ゴミに当たると...
         {
-            
+            dustflag = true;
         }
-
     }
 }
