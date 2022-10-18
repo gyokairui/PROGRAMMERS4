@@ -11,7 +11,9 @@ public class f_Player : MonoBehaviour
     public static float applySpeed = 0.2f;
     public static int keyPlayer;
     public static int Score = 0;//スコア
+    public static int Score2 = 0;//スコア2
     public float speed;
+    public static int DustBOX = 0;
     public Slider slider_G; //ゴミ箱のゲージタンク
     public Slider slider_P; //プレイヤーのタンクゲージ
 
@@ -21,7 +23,7 @@ public class f_Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        transform.Rotate(new Vector3(0.0f, 0.0f, 90.0f));
+
     }
 
     void Update()
@@ -30,18 +32,23 @@ public class f_Player : MonoBehaviour
 
         //transform.Rotate(new Vector3(0.0f, 0.0f, 0.1f));
 
-        Debug.Log(movement);
-
-        // if(movement==1.0,0.0)
-
+        if(tag == "dustbox")
+        {
+            if (Input.GetKeyDown("Return"))
+            {
+                slider_P.value = 0;
+                slider_G.value += Score;
+                DustBOX += Score;
+                Score = 0;
+            }
+        }
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
-        KeyPlayer();
     }
-
+    
     private void MovePlayer()
     {
         rb.AddForce(movement.normalized * moveSpeed);
@@ -50,10 +57,7 @@ public class f_Player : MonoBehaviour
         //                                         applySpeed);
     }
 
-    private void KeyPlayer()
-    {
-
-    }
+    
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -64,16 +68,18 @@ public class f_Player : MonoBehaviour
             slider_P.value++;
         }
 
-        if (collision.gameObject.tag == "dustbox")//ゴミに当たると...
-        {
-            //プレイヤーとゴミ箱が重なったときに、
-            //スペースボタンを押したら吸い込んだゴミをゴミ箱に捨てる。
-            //ゴミ箱に捨てたらプレイヤーのタンクゲージは減って、ゴミ箱のゲージは増える。
-            if (Input.GetButton("SPACE"))
-            {
-                slider_G.value++; //ゴミ箱のゲージが増える
-                slider_P.value--; //プレイヤーのタンクゲージが減る
-            }
-        }
+
+        //if (collision.gameObject.tag == "dustbox")//ゴミに当たると...
+        //{
+        //    //プレイヤーとゴミ箱が重なったときに、
+        //    //スペースボタンを押したら吸い込んだゴミをゴミ箱に捨てる。
+        //    //ゴミ箱に捨てたらプレイヤーのタンクゲージは減って、ゴミ箱のゲージは増える。
+        //    if (Input.GetButton("SPACE"))
+        //    {
+        //        slider_G.value++; //ゴミ箱のゲージが増える
+        //        slider_P.value--; //プレイヤーのタンクゲージが減る
+        //    }
+        //}
     }
+   
 }

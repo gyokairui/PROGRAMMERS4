@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/hujinaga/Scene/stage1.unity
     guid: 26e7472129e88474d890cc47f93b597b
+  - enabled: 1
+    path: Assets/Koyama/Scenes/GameOver.unity
+    guid: 18820bbb24a3fec44a63f9efd46a612b
+  - enabled: 1
+    path: Assets/Koyama/Scenes/Tutorial.unity
+    guid: ad80062be3b1342438486971c69dae5f
+  - enabled: 1
+    path: Assets/Koyama/Scenes/Title.unity
+    guid: 438612c3bf6181c46b6207db17f3e1bd
   m_configObjects: {}
