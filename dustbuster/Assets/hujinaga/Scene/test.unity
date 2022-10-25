@@ -195,8 +195,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 338.1628, y: 283.45013}
-  m_SizeDelta: {x: 223.6819, y: 33.0926}
+  m_AnchoredPosition: {x: 206.9, y: 147.8}
+  m_SizeDelta: {x: 163.4675, y: 19.2729}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &154375455
 MonoBehaviour:
@@ -919,7 +919,6 @@ GameObject:
   - component: {fileID: 822405418}
   - component: {fileID: 822405417}
   - component: {fileID: 822405420}
-  - component: {fileID: 822405421}
   m_Layer: 0
   m_Name: dustbox
   m_TagString: dustbox
@@ -1026,24 +1025,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822405416}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc3ceef1eb6f3284fbd256540729c90d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &822405421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822405416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd8f19b4b61e5f146bc3e5247e4d32e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Slider_G: {fileID: 154375455}
 --- !u!1 &870611144
 GameObject:
   m_ObjectHideFlags: 0
