@@ -5,25 +5,29 @@ using UnityEngine;
 public class TargetMoveScript : MonoBehaviour
 {
 	// 速度
-	public Vector2 speed = new Vector2(0.00f, 0.00f);
+	public Vector2 speed = new Vector2(0.01f, 0.01f);
 	// ターゲットとなるオブジェクト
 	public GameObject targetObject;
 	// ラジアン変数
 	private float rad;
 	// 現在位置を代入する為の変数
 	private Vector2 Position;
+
+	public bool flg = false;
+
+	
 	// Use this for initialization
 	void Start()
 	{
-		
 		
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if(dustrange.dustflag==true)
-        {
+		
+		if (flg)
+		{
 			//GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 			// ラジアン
 			// atan2(目標方向のy座標 - 初期位置のy座標, 目標方向のx座標 - 初期位置のx座標)
@@ -42,6 +46,6 @@ public class TargetMoveScript : MonoBehaviour
 			// 現在の位置に加算減算を行ったPositionを代入する
 			transform.position = Position;
 		}
-		
+
 	}
 }
