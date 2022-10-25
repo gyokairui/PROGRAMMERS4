@@ -7,15 +7,22 @@ using UnityEngine.UI;
 
 public class f_Player : MonoBehaviour
 {
-    public static float moveSpeed = 50;//プレイヤースピード
-    public static float applySpeed = 0.2f;
-    public static int keyPlayer;
-    public static int Score = 0;//スコア
-    public static int Score2 = 0;//スコア2
-    public float speed;
-    public static int DustBOX = 0;
-    public Slider slider_G; //ゴミ箱のゲージタンク
-    public Slider slider_P; //プレイヤーのタンクゲージ
+    public static float moveSpeed = 10;       //プレイヤースピード
+    public static int P_HP = 3;             //プレイヤーHP
+    public static int P_Money = 0;          //お金
+    public static int Score = 0;            //スコア
+    public static int DustBOX = 0;          //掃除機の容量
+    public string objName;
+    public static bool dustboxfrag = false;
+
+    //位置
+    public Transform target;
+    public Vector3 offset;
+
+    //ゲージ表示関係--------------
+    public Slider slider;
+    public Slider slider2;
+    //----------------------------
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -23,63 +30,98 @@ public class f_Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
     }
 
     void Update()
     {
-        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));//移動
+        offset = new Vector3(2, 2, 2);
 
         //transform.Rotate(new Vector3(0.0f, 0.0f, 0.1f));
+        //Debug.Log(movement);
+        // if(movement==1.0,0.0)
 
-        if(tag == "dustbox")
+
+        if (DustBOX >= 3)//ゴミ箱ポイントが一定を超えるとクリア
         {
-            if (Input.GetKeyDown("Return"))
+            Debug.Log("クリア");
+        }
+
+        if (P_HP <= 0)//ガムに3回当たるとゲームーオーバー
+        {
+            Debug.Log("ゲームオーバー");
+        }
+
+        if(dustboxfrag == false)
+        {
+            if (Input.GetButtonDown("RETURN"))
             {
-                slider_P.value = 0;
-                slider_G.value += Score;
-                DustBOX += Score;
-                Score = 0;
+                slider.value = 0;//掃除機ゲージの表示が０になる
+                slider2.value += Score;//ゴミ箱ゲージの表示が増える
+                DustBOX += Score;//掃除機ポイントがゴミ箱に加算される
+                Score = 0;//掃除機ポイントがリセット
             }
         }
+        
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
     }
-    
+
     private void MovePlayer()
     {
-        rb.AddForce(movement.normalized * moveSpeed);
+        rb.AddForce(movement.normalized * moveSpeed);//移動
         //transform.rotation = Quaternion.Slerp(transform.rotation,
-        //                                         Quaternion.LookRotation(-velocity),
-        //                                         applySpeed);
+        //Quaternion.LookRotation(-velocity),
+        //applySpeed);
     }
-
-    
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "dust")//ゴミに当たると...
         {
-            Score++;
-            Debug.Log(Score);
-            slider_P.value++;
+            Score++;//掃除機ゲージのポイントが増える
+            Debug.Log(Score);//掃除機ポイントの表示
+            slider.value++;//掃除機ゲージの表示が増える
         }
 
-
-        //if (collision.gameObject.tag == "dustbox")//ゴミに当たると...
+        //if (collision.gameObject.tag == "dustbox")//ゴミ箱に当たると...
         //{
-        //    //プレイヤーとゴミ箱が重なったときに、
-        //    //スペースボタンを押したら吸い込んだゴミをゴミ箱に捨てる。
-        //    //ゴミ箱に捨てたらプレイヤーのタンクゲージは減って、ゴミ箱のゲージは増える。
-        //    if (Input.GetButton("SPACE"))
-        //    {
-        //        slider_G.value++; //ゴミ箱のゲージが増える
-        //        slider_P.value--; //プレイヤーのタンクゲージが減る
-        //    }
+        //    slider.value = 0;//掃除機ゲージの表示が０になる
+        //    slider2.value += Score;//ゴミ箱ゲージの表示が増える
+        //    DustBOX += Score;//掃除機ポイントがゴミ箱に加算される
+        //    Score = 0;//掃除機ポイントがリセット
         //}
+
+
+        if (collision.gameObject.tag == "Gamu")//ガムに当たると...
+        {
+            P_HP--;
+        }
+
+        //お金ヒット↓------------------------------------------------------------
+        if (collision.gameObject.tag == "10")//１０円に当たると...
+        {
+            P_Money += 10;
+            Debug.Log(P_Money);//ポイントの表示
+        }
+        if (collision.gameObject.tag == "100")//１００円に当たると...
+        {
+            P_Money += 100;
+            Debug.Log(P_Money);//ポイントの表示
+        }
+        if (collision.gameObject.tag == "500")//５００円に当たると...
+        {
+            P_Money += 500;
+            Debug.Log(P_Money);//ポイントの表示
+        }
+        //------------------------------------------------------------------------
+
+        //objName = collision.gameObject.name;
+        //Debug.Log(objName);
+
+
     }
-   
 }
