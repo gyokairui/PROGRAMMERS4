@@ -486,11 +486,11 @@ InputManager:
     axis: 5
     joyNum: 0
   - serializedVersion: 3
-    m_Name: SPACE
-    descriptiveName: SPACE
+    m_Name: RETURN
+    descriptiveName: RETURN
     descriptiveNegativeName: 
-    negativeButton: left
-    positiveButton: 
+    negativeButton: 
+    positiveButton: return
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
