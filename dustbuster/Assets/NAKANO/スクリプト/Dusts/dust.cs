@@ -17,6 +17,11 @@ public class dust : MonoBehaviour
 
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+       
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")//ÉvÉåÉCÉÑÅ[Ç…ìñÇΩÇÈÇ∆...
@@ -27,6 +32,5 @@ public class dust : MonoBehaviour
             //Debug.Log(Player.Score);
             //P_dustflag = true;
         }
-
     }
 }

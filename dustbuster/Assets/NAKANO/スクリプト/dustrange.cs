@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class dustrange : MonoBehaviour
 {
-    public static bool dustflag=false;
+    public bool dustflag=false;
+
+    public GameObject objParent;
    
 
     // Start is called before the first frame update
@@ -16,14 +18,17 @@ public class dustrange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")//ÉvÉåÉCÉÑÅ[Ç…ìñÇΩÇÈÇ∆...
         {
-            dustflag = true;
+            //dustflag = true;
+            GameObject objParent = transform.parent.gameObject;
+            TargetMoveScript scParent = objParent.GetComponent<TargetMoveScript>();
+            scParent.flg = true;
         }
 
     }
