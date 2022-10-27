@@ -24,10 +24,18 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
 
+    AudioSource audioSource;
+    public AudioClip sound1;
+    public AudioClip sound2;
+    public AudioClip sound3;
+    public AudioClip sound4;
+    public AudioClip sound5;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(sound1);
     }
 
     void Update()
@@ -62,6 +70,7 @@ public class Player : MonoBehaviour
 
     private void MovePlayer()
     {
+        audioSource.PlayOneShot(sound2);
         rb.AddForce(movement.normalized * moveSpeed);//移動
         //transform.rotation = Quaternion.Slerp(transform.rotation,
         //Quaternion.LookRotation(-velocity),
@@ -70,22 +79,14 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "dust")//ゴミに当たると...
-        {
-   //         Score++;//掃除機ゲージのポイントが増える
-   //         slider.value++;//掃除機ゲージの表示が増える
-   //                        //アイテムに触れると振動する
-   //         transform.DOShakeScale(
-   //duration: 0.2f,   // 演出時間
-   //strength: 0.2f  // シェイクの強さ
-   //);
-        }
+        
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "dust")//ゴミに当たると...
         {
+            audioSource.PlayOneShot(sound4);
             Score++;//掃除機ゲージのポイントが増える
             slider.value++;//掃除機ゲージの表示が増える
                            //アイテムに触れると振動する
@@ -108,6 +109,8 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "Gamu")//ガムに当たると...
         {
+            P_Effect.Effect_flg = true;
+            audioSource.PlayOneShot(sound5);
             P_HP--;
             transform.DOShakeScale(
 duration: 0.3f,   // 演出時間
