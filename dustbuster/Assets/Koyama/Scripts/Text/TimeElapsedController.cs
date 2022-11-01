@@ -19,20 +19,20 @@ public class TimeElapsedController : MonoBehaviour
         textUI.text = "○説明○";
 
         //数秒待つ
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(2.5f);
 
         //数秒待った後の処理
         textUI.text = "「WASD」：移動";
         //textUI.text = "「Enter」:";
 
         //数秒待つ
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(2.5f);
 
         //数秒待った後の処理
         textUI.text = "「R」　 :リスタート";
 
         //数秒待つ
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(2.5f);
 
         //数秒待った後にテキストを消す
         //テキスト閉じる方法わからん
