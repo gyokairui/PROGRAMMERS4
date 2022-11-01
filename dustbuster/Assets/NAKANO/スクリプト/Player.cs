@@ -148,9 +148,5 @@ strength: 0.4f  // シェイクの強さ
         }
         //------------------------------------------------------------------------
 
-        //objName = collision.gameObject.name;
-        //Debug.Log(objName);
-
-
     }
 }
