@@ -25,8 +25,8 @@ public class TargetMoveScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		
-		if (flg)
+		//ゴミの範囲内に入る＆プレイヤーのゴミ容量が余っているとゴミが動く
+		if (flg && Player.DustFULL == false)
 		{
 			//GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 			// ラジアン
@@ -46,6 +46,8 @@ public class TargetMoveScript : MonoBehaviour
 			// 現在の位置に加算減算を行ったPositionを代入する
 			transform.position = Position;
 		}
+		else
+			flg = false;
 
 	}
 }

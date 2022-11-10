@@ -24,7 +24,7 @@ public class dust : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")//プレイヤーに当たると...
+        if (collision.gameObject.tag == "Player"&&Player.DustFULL==false)//プレイヤーに当たると...
         {
             //Debug.Log("★");
             Destroy(this.gameObject);
