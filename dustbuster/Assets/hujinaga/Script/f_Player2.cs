@@ -96,6 +96,16 @@ public class f_Player2 : MonoBehaviour
    );
         }
 
+        //靴下に当たったら掃除機のゲージが減る処理
+        if (collision.gameObject.tag == "socks")//靴下に当たると掃除機のゲージが減る
+        {
+            //audioSource.PlayOneShot(sound4);
+            Score--;//掃除機ゲージのポイントが減る
+            slider.value--;//掃除機ゲージの表示が減る
+            Debug.Log("掃除機のゲージが減りました");
+  
+        }
+
         if (collision.gameObject.tag == "dustbox")//ゴミ箱に当たると...
         {
             slider.value = 0;//掃除機ゲージの表示が０になる

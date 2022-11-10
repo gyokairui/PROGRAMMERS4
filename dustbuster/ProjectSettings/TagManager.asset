@@ -13,6 +13,7 @@ TagManager:
   - 10
   - 100
   - 500
+  - socks
   layers:
   - Default
   - TransparentFX
