@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+
 
 [RequireComponent(typeof(Rigidbody2D))]
 
@@ -16,7 +18,11 @@ public class Player : MonoBehaviour
     public static bool DustFULL = false;
     public string objName;
     public static bool P_V = false;
-  
+    public static bool GameOver_flg = false;
+
+    public string sceneName;//シーン名inspectorで指定
+    public string sceneName2;//シーン名inspectorで指定
+
     //ゲージ表示関係--------------
     public Slider slider;
     public Slider slider2;
@@ -42,7 +48,7 @@ public class Player : MonoBehaviour
     {
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));//移動
 
-      if(Score>=5)
+      if(Score>=5)//プレイヤーの容量
         {
             DustFULL = true;
         }
@@ -54,10 +60,29 @@ public class Player : MonoBehaviour
 
         if (P_HP <= 0)//ガムに3回当たるとゲームーオーバー
         {
-            Debug.Log("ゲームオーバー");
+            P_HP = 3;
+            DustBOX = 0;
+            Score = 0;
+            P_Money = 0;
+            GameOver_flg = true;
+            DustFULL = false;
+            SceneManager.LoadScene(sceneName);
+            GameOver_flg = false;
         }
 
-       //プレイヤーの大きさを1に固定する
+        if (Input.GetKeyDown(KeyCode.R))//リスタートする
+        {
+            P_HP = 3;
+            DustBOX = 0;
+            Score = 0;
+            P_Money = 0;
+            GameOver_flg = true;
+            DustFULL = false;
+            SceneManager.LoadScene(sceneName2);
+            GameOver_flg = false;
+        }
+
+        //プレイヤーの大きさを1に固定する
         Vector3 kero = new Vector3(1, 1, 1); 
         kero.x = 1; 
         gameObject.transform.localScale = kero; 
