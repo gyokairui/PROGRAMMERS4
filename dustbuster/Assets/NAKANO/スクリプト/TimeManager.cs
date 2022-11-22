@@ -27,11 +27,25 @@ public class TimeManager : MonoBehaviour
             timeText.text = "タイムアップ";
             if(Player.Score>=20)//ゴミが一定以上あるとクリア
             {
+                Player.P_HP = 3;
+                Player.DustBOX = 0;
+                Player.Score = 0;
+                Player.P_Money = 0;
+                Player.GameOver_flg = true;
+                Player.DustFULL = false;
+                Player.GameOver_flg = false;
                 SceneManager.LoadScene(sceneName1);
             }
 
             if (Player.Score < 20)//ゴミが一定以上無いとゲームオーバー
             {
+                Player.P_HP = 3;
+                Player.DustBOX = 0;
+                Player.Score = 0;
+                Player.P_Money = 0;
+                Player.GameOver_flg = true;
+                Player.DustFULL = false;
+                Player.GameOver_flg = false;
                 SceneManager.LoadScene(sceneName2);
             }
         }

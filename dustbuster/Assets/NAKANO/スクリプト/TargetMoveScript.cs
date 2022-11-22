@@ -5,7 +5,7 @@ using UnityEngine;
 public class TargetMoveScript : MonoBehaviour
 {
 	// 速度
-	public　static Vector2 speed = new Vector2(0.02f, 0.02f);
+	public　static Vector2 speed = new Vector2(0.03f, 0.03f);
 	// ターゲットとなるオブジェクト
 	public GameObject targetObject;
 	// ラジアン変数
