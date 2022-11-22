@@ -14,6 +14,7 @@ TagManager:
   - 100
   - 500
   - socks
+  - arrow
   layers:
   - Default
   - TransparentFX
