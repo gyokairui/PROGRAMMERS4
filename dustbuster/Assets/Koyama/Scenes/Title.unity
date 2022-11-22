@@ -2630,4 +2630,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5a6ff33d26dcb4f8febe6fe41f60df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: NAKANOScene
+  sceneName: Menu
