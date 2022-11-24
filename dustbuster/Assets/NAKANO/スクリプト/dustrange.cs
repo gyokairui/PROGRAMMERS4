@@ -18,7 +18,7 @@ public class dustrange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if(Player.P_Money>=500)
+      if(Player.P_Money>=Player.Player_LevelUP)
         {
             capsuleCollider2.size = new Vector2(4, 1);
         }

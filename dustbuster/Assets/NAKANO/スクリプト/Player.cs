@@ -13,24 +13,28 @@ public class Player : MonoBehaviour
     public static float moveSpeed = 10;       //プレイヤースピード
     public static int P_HP = 3;             //プレイヤーHP
     public static int P_Money = 0;          //お金
+    public static int Player_LevelUP = 500;//プレイヤーのレベルアップに必要なお金
     public static int Score = 0;            //スコア
     public static int DustBOX = 0;          //掃除機の容量
     public static bool DustFULL = false;
     public string objName;
     public static bool P_V = false;
     public static bool GameOver_flg = false;
-
+    bool P_LevelUP = false;
     public string sceneName;//シーン名inspectorで指定
     public string sceneName2;//シーン名inspectorで指定
 
     //ゲージ表示関係--------------
     public Slider slider;
     public Slider slider2;
+    
+    Slider hpSlider;
     //----------------------------
 
     private Rigidbody2D rb;
     private Vector2 movement;
 
+    //サウンド関係
     AudioSource audioSource;
     public AudioClip sound1;
     public AudioClip sound2;
@@ -42,47 +46,71 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        hpSlider = GetComponent<Slider>();
     }
 
     void Update()
     {
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));//移動
 
-      if(Score>=5)//プレイヤーの容量
+
+        //ノーマル状態
+        if(P_Money<Player_LevelUP&& Score>=5)//プレイヤーの容量
+        {
+              DustFULL = true;
+        }
+
+        //レベルアップ状態
+        if (P_Money >= Player_LevelUP && Score >= 10)//プレイヤーの容量
         {
             DustFULL = true;
         }
+    
+        //レベルアップ状態
+        if (P_Money>=Player_LevelUP)
+        {
+            moveSpeed = 15;//移動速度上昇
+            //スライダーの最大値の設定
+            slider.maxValue = 10;
+        }
+        if (P_Money >= Player_LevelUP&&P_LevelUP==false)
+        {
+            P_LevelUP = true;
+            DustFULL = false;
+        }
 
-        //if (DustBOX >= 3)//ゴミ箱ポイントが一定を超えるとクリア
-        //{
-        //    Debug.Log("クリア");
-        //}
-
+        //   //プレイヤー変数リセット----------------------------------------
         if (P_HP <= 0)//ガムに3回当たるとゲームーオーバー
         {
             P_HP = 3;
             DustBOX = 0;
             Score = 0;
             P_Money = 0;
+            moveSpeed = 10;
             GameOver_flg = true;
             DustFULL = false;
-            SceneManager.LoadScene(sceneName);
             GameOver_flg = false;
+            P_LevelUP = false;
+            SceneManager.LoadScene(sceneName);
         }
-
         if (Input.GetKeyDown(KeyCode.R))//リスタートする
         {
+            //プレイヤー変数リセット
             P_HP = 3;
             DustBOX = 0;
             Score = 0;
             P_Money = 0;
+            moveSpeed = 10;
             GameOver_flg = true;
             DustFULL = false;
-            SceneManager.LoadScene(sceneName2);
             GameOver_flg = false;
+            P_LevelUP = false;
+            SceneManager.LoadScene(sceneName2);
         }
+        //-------------------------------------------------------------
 
-        //プレイヤーの大きさを1に固定する
+
+        //プレイヤーの大きさを常に1に固定する
         Vector3 kero = new Vector3(1, 1, 1); 
         kero.x = 1; 
         gameObject.transform.localScale = kero; 
@@ -93,20 +121,12 @@ public class Player : MonoBehaviour
         MovePlayer();
     }
 
-    private void MovePlayer()
+    private void MovePlayer()//移動
     {
-      
         rb.AddForce(movement.normalized * moveSpeed);//移動
-        //transform.rotation = Quaternion.Slerp(transform.rotation,
-        //Quaternion.LookRotation(-velocity),
-        //applySpeed);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
-
+  
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "dust" && DustFULL == false)//ゴミに当たると...
@@ -116,9 +136,9 @@ public class Player : MonoBehaviour
             slider.value++;//掃除機ゲージの表示が増える
                            //アイテムに触れると振動する
             transform.DOShakeScale(
-   duration: 0.2f,   // 演出時間
-   strength: 0.2f  // シェイクの強さ
-   );
+              duration: 0.2f,   // 演出時間
+              strength: 0.2f  // シェイクの強さ
+                              );
         }
 
         if (collision.gameObject.tag == "dustbox")//ゴミ箱に当たると...
