@@ -20,9 +20,12 @@ public class Player : MonoBehaviour
     public string objName;
     public static bool P_V = false;
     public static bool GameOver_flg = false;
-    bool P_LevelUP = false;
-    public string sceneName;//シーン名inspectorで指定
-    public string sceneName2;//シーン名inspectorで指定
+    public static bool P_LevelUP = false;
+
+    //シーン関係------------------------------------------
+    public string sceneName;//ゲームオーバー
+    public string sceneName2;//リトライ用
+    public string sceneName3;//ゲームクリアー
 
     //ゲージ表示関係--------------
     public Slider slider;
@@ -106,6 +109,11 @@ public class Player : MonoBehaviour
             GameOver_flg = false;
             P_LevelUP = false;
             SceneManager.LoadScene(sceneName2);
+        }
+
+        if(DustBOX>=20)//20以上になると即クリア画面になる
+        {
+            SceneManager.LoadScene(sceneName3);
         }
         //-------------------------------------------------------------
 
