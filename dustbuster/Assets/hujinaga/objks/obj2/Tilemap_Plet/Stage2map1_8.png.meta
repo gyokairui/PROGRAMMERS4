@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: a0d7df348dea6a94e80ef682a80490e4
+guid: b69c3f3cc48fae44197107553ae86c79
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2095367798658099230
-    second: Stage2map1_3_83
-  - first:
-      213: 4559468112378202698
-    second: Stage2map1_3_0
+      213: 4353762293829596935
+    second: Stage2map1_8_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -52,7 +49,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 6
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,22 +94,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stage2map1_3_0
+      name: Stage2map1_8_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 1344
-        width: 6
-        height: 6
+        x: 22
+        y: 663
+        width: 85
+        height: 85
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4a0603571c764f30800000000000000
-      internalID: 4559468112378202698
+      spriteID: 707f3303dbbab6c30800000000000000
+      internalID: 4353762293829596935
       vertices: []
       indices: 
       edges: []
