@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class DestroyScript : MonoBehaviour
 {
-    public int stage_n; // スコア変数
+    public static int stage_N = 1; // スコア変数
     public GameObject b;
+
+    int a = SceneController.Number;
 
     // Start is called before the first frame update
     void Start()
     {
-        stage_n = PlayerPrefs.GetInt("SCORE", 0);
+        //stage_n = PlayerPrefs.GetInt("SCORE", 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //stage_numが２以上のとき、ステージ２を解放する。
-        if (stage_n >= 2)
+        //stage_numが3以上のとき、ステージ２を解放する。
+        if (a >= 2)
         {
-            Destroy(gameObject);
+            Destroy(b);
+            Debug.Log("a");
         }
     }
 }

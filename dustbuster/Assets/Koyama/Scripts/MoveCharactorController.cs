@@ -7,7 +7,7 @@ public class MoveCharactorController : MonoBehaviour
 {
     private float speed = 0.01f;
 
-    public string sceneName;
+    public string sceneName;//シーン名inspectorで指定
 
     void Start()
     {
@@ -43,12 +43,11 @@ public class MoveCharactorController : MonoBehaviour
         if (other.gameObject.CompareTag("Block"))
         {
             SceneManager.LoadScene(sceneName);
-            //PlayerPrefsのSCOREに2という値を入れる
-            PlayerPrefs.SetInt("SCORE", 2);
-            //PlayerPrefsをセーブする         
-            PlayerPrefs.Save();
-
-            Debug.Log("a");
+            Debug.Log("c");
+            ////PlayerPrefsのSCOREに3という値を入れる
+            //PlayerPrefs.SetInt("SCORE", 3);
+            ////PlayerPrefsをセーブする         
+            //PlayerPrefs.Save(); 
         }
     }
 }
