@@ -8,7 +8,6 @@ public class StageScript : MonoBehaviour
 
     public int stage_num; // スコア変数
     public GameObject ni;
-    public GameObject san;
 
     // Use this for initialization
     void Start()
@@ -20,15 +19,10 @@ public class StageScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //stage_numが２以上のとき、ステージ２を解放する。以下同様
+        //stage_numが２以上のとき、ステージ２を解放する。
         if (stage_num >= 2)
         {
             ni.SetActive(true);
-        }
-
-        if (stage_num >= 3)
-        {
-            san.SetActive(true);
         }
     }
 }
