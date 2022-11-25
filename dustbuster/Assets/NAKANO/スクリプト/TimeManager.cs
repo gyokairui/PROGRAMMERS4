@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 public class TimeManager : MonoBehaviour
 {
     //カウントダウン
-    public float countdown = 5.0f;
+    public float countdown = 60.0f;
 
     //時間を表示するText型の変数
     public Text timeText;
-    public string sceneName1;//シーン名inspectorで指定
-    public string sceneName2;//シーン名inspectorで指定
+
+    //シーン関係-----------------------------------------------
+    public string SceneName1;//ゲームオーバー
+    public string SceneName2;//ゲームクリアー
+    //----------------------------------------------------
     // Update is called once per frame
     void Update()
     {
@@ -22,31 +25,36 @@ public class TimeManager : MonoBehaviour
         timeText.text = countdown.ToString("f1") + "秒";
 
         //countdownが0以下になったとき
+        //ステータス初期化
         if (countdown <= 0)
         {
             timeText.text = "タイムアップ";
-            if(Player.Score>=20)//ゴミが一定以上あるとクリア
+            if(Player.DustBOX>=15)//ゴミが一定以上あるとクリア
             {
                 Player.P_HP = 3;
                 Player.DustBOX = 0;
                 Player.Score = 0;
                 Player.P_Money = 0;
+                Player.moveSpeed = 10;
                 Player.GameOver_flg = true;
                 Player.DustFULL = false;
                 Player.GameOver_flg = false;
-                SceneManager.LoadScene(sceneName1);
+                Player.P_LevelUP = false;
+                SceneManager.LoadScene(SceneName1);
             }
 
-            if (Player.Score < 20)//ゴミが一定以上無いとゲームオーバー
+            if (Player.DustBOX < 15)//ゴミが一定以上無いとゲームオーバー
             {
                 Player.P_HP = 3;
                 Player.DustBOX = 0;
                 Player.Score = 0;
                 Player.P_Money = 0;
+                Player.moveSpeed = 10;
                 Player.GameOver_flg = true;
                 Player.DustFULL = false;
                 Player.GameOver_flg = false;
-                SceneManager.LoadScene(sceneName2);
+                Player.P_LevelUP = false;
+               　SceneManager.LoadScene(SceneName2);
             }
         }
 

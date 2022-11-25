@@ -14559,6 +14559,7 @@ MonoBehaviour:
   objName: 
   sceneName: GameOver
   sceneName2: NAKANOScene
+  sceneName3: GameClear
   slider: {fileID: 601976237}
   slider2: {fileID: 154375455}
   sound1: {fileID: 0}
@@ -15135,10 +15136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc67746f5b22b534c95d4ab76bb2b5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdown: 60
+  countdown: 50
   timeText: {fileID: 1709923702}
-  sceneName1: 
-  sceneName2: GameOver
+  SceneName1: GameOver
+  SceneName2: GameClear
 --- !u!4 &2059219730
 Transform:
   m_ObjectHideFlags: 0
