@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: a0d7df348dea6a94e80ef682a80490e4
+guid: 376b4164b58216a41a770285bf5f53ca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2095367798658099230
-    second: Stage2map1_3_83
+      213: 856125142327006730
+    second: Stage2map1_10_0
   - first:
-      213: 4559468112378202698
-    second: Stage2map1_3_0
+      213: -1972306204647535272
+    second: Stage2map1_10_1
+  - first:
+      213: 8522414952158797024
+    second: Stage2map1_10_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -52,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 6
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,22 +100,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stage2map1_3_0
+      name: Stage2map1_10_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 1344
-        width: 6
-        height: 6
+        x: 213
+        y: 704
+        width: 23
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4a0603571c764f30800000000000000
-      internalID: 4559468112378202698
+      spriteID: a069eafe74191eb00800000000000000
+      internalID: 856125142327006730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage2map1_10_1
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 672
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85d4fa3e4f5f0a4e0800000000000000
+      internalID: -1972306204647535272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage2map1_10_2
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 736
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ec17ebce33b54670800000000000000
+      internalID: 8522414952158797024
       vertices: []
       indices: 
       edges: []
