@@ -10,30 +10,36 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public static float moveSpeed = 10;       //プレイヤースピード
-    public static int P_HP = 3;             //プレイヤーHP
-    public static int P_Money = 0;          //お金
-    public static int Player_LevelUP = 500;//プレイヤーのレベルアップに必要なお金
-    public static int Score = 0;            //スコア
-    public static int DustBOX = 0;          //掃除機の容量
-    public static bool DustFULL = false;
-    public string objName;
-    public static bool P_V = false;
-    public static bool GameOver_flg = false;
-    public static bool P_LevelUP = false;
+    //プレイヤー情報
+    public static float moveSpeed = 10;         //プレイヤースピード
+    public static int P_HP = 3;                 //プレイヤーHP
+    public static int P_Money = 0;              //お金
+    public static int DustBOX = 0;              //ゴミ箱の容量
+    public static int Score = 0;                //掃除機の容量
+    public static bool DustFULL = false;　　    //掃除機の容量が満タンかどうか
+    public static bool GameOver_flg = false;    //ゲームオーバーしているか
+    public static bool P_LevelUP = false;       //プレイヤーがレベルアップしたか
+
+
+    public static int now_stage_number = 0;     //現在プレイ中のステージ判定（１ならstage１、２ならstage２になる）
+    public static int stage_1Point = 15;        //ステージ1クリアに必要なポイント
+    public static int stage_2Point = 25;        //ステージ2クリアに必要なポイント
+
+    public static int stage_1_LevelUP = 500;    //ステージ１でプレイヤーのレベルアップに必要なお金
+    public static int stage_2_LevelUP = 1000;   //ステージ２でプレイヤーのレベルアップに必要なお金
 
     //シーン関係------------------------------------------
-    public string sceneName;//ゲームオーバー
-    public string sceneName2;//リトライ用
-    public string sceneName3;//ゲームクリアー
+    public string sceneName;    //ゲームオーバー
+    public string sceneName2;   //リトライ用
+    public string sceneName3;   //ゲームクリアー
 
     //ゲージ表示関係--------------
-    public Slider slider;
-    public Slider slider2;
-    
-    Slider hpSlider;
+    public Slider slider;       //プレイヤーゲージ
+    public Slider slider2;      //ゴミ箱ゲージ
+
     //----------------------------
 
+    Slider hpSlider;
     private Rigidbody2D rb;
     private Vector2 movement;
 
@@ -58,26 +64,28 @@ public class Player : MonoBehaviour
 
 
         //ノーマル状態
-        if(P_Money<Player_LevelUP&& Score>=5)//プレイヤーの容量
+        if(P_Money<stage_1_LevelUP && Score>=5)//プレイヤーの容量
         {
-              DustFULL = true;
+              DustFULL = true;//満タン
         }
 
         //レベルアップ状態
-        if (P_Money >= Player_LevelUP && Score >= 10)//プレイヤーの容量
+        if (P_Money >= stage_1_LevelUP && Score >= 10)//プレイヤーの容量
         {
-            DustFULL = true;
+            DustFULL = true;//満タン
         }
     
         //レベルアップ状態
-        if (P_Money>=Player_LevelUP)
+        if (P_Money>= stage_1_LevelUP)
         {
             moveSpeed = 15;//移動速度上昇
             //スライダーの最大値の設定
             slider.maxValue = 10;
         }
-        if (P_Money >= Player_LevelUP&&P_LevelUP==false)
+
+        if (P_Money >= stage_1_LevelUP && P_LevelUP==false)
         {
+            //満タン状態でレベルアップするとゴミが吸い込まれない不具合修正
             P_LevelUP = true;
             DustFULL = false;
         }
@@ -113,12 +121,22 @@ public class Player : MonoBehaviour
 
         if(DustBOX>=20)//20以上になると即クリア画面になる
         {
-            SceneManager.LoadScene(sceneName3);
+            //プレイヤー変数リセット
+            P_HP = 3;
+            DustBOX = 0;
+            Score = 0;
+            P_Money = 0;
+            moveSpeed = 10;
+            GameOver_flg = true;
+            DustFULL = false;
+            GameOver_flg = false;
+            P_LevelUP = false;
+            SceneManager.LoadScene(sceneName3);     
         }
         //-------------------------------------------------------------
 
 
-        //プレイヤーの大きさを常に1に固定する
+        //プレイヤーの大きさを常に1に固定する（シェイクによるプレイヤーの大きさ変形対策）
         Vector3 kero = new Vector3(1, 1, 1); 
         kero.x = 1; 
         gameObject.transform.localScale = kero; 
@@ -126,7 +144,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        MovePlayer();//プレイヤーの移動
     }
 
     private void MovePlayer()//移動
@@ -157,8 +175,6 @@ public class Player : MonoBehaviour
             DustBOX += Score;//掃除機ポイントがゴミ箱に加算される
             audioSource.PlayOneShot(sound5);
             Score = 0;//掃除機ポイントがリセット
-            P_V = true;
-          
         }
 
 

@@ -12,14 +12,15 @@ public class dustrange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //circle2 = GetComponent<CircleCollider2D>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-      if(Player.P_Money>=Player.Player_LevelUP)
+      if(Player.P_Money>=Player.stage_1_LevelUP)
         {
+            //プレイヤーがレベルアップするとゴミの判定距離が伸びる
             capsuleCollider2.size = new Vector2(4, 1);
         }
     }
@@ -28,7 +29,7 @@ public class dustrange : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")//プレイヤーに当たると...
         {
-            //dustflag = true;
+            //プレイヤーに向かって進む
             GameObject objParent = transform.parent.gameObject;
             TargetMoveScript scParent = objParent.GetComponent<TargetMoveScript>();
             scParent.flg = true;
