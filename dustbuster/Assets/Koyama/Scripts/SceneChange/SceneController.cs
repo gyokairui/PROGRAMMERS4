@@ -18,6 +18,6 @@ public class SceneController : MonoBehaviour
         //PlayerPrefs.Save();
         Number = 2;
 
-        Debug.Log("b");
+        //Debug.Log("b");
     }
 }
