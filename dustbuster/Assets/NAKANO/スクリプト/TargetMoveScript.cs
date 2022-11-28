@@ -28,7 +28,6 @@ public class TargetMoveScript : MonoBehaviour
 		//ゴミの範囲内に入る＆プレイヤーのゴミ容量が余っているとゴミが動く
 		if (flg && Player.DustFULL == false)
 		{
-			//GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 			// ラジアン
 			// atan2(目標方向のy座標 - 初期位置のy座標, 目標方向のx座標 - 初期位置のx座標)
 			// これでラジアンが出る。

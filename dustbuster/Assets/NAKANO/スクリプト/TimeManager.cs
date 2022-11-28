@@ -15,6 +15,11 @@ public class TimeManager : MonoBehaviour
     public string SceneName1;//ゲームオーバー
     public string SceneName2;//ゲームクリアー
     //----------------------------------------------------
+
+    void start()
+    {
+       
+    }
     // Update is called once per frame
     void Update()
     {
@@ -40,10 +45,12 @@ public class TimeManager : MonoBehaviour
                 Player.DustFULL = false;
                 Player.GameOver_flg = false;
                 Player.P_LevelUP = false;
-                SceneManager.LoadScene(SceneName1);
+                SceneManager.LoadScene(SceneName2);
+                
             }
 
-            if (Player.DustBOX < 15)//ゴミが一定以上無いとゲームオーバー
+            //if (Player.DustBOX < 15)//ゴミが一定以上無いとゲームオーバー
+            else
             {
                 Player.P_HP = 3;
                 Player.DustBOX = 0;
@@ -54,7 +61,8 @@ public class TimeManager : MonoBehaviour
                 Player.DustFULL = false;
                 Player.GameOver_flg = false;
                 Player.P_LevelUP = false;
-               　SceneManager.LoadScene(SceneName2);
+                SceneManager.LoadScene(SceneName1);
+               
             }
         }
 
