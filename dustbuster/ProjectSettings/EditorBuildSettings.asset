@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Koyama/Scenes/Title.unity
     guid: 438612c3bf6181c46b6207db17f3e1bd
+  - enabled: 1
+    path: Assets/Koyama/Scenes/Menu.unity
+    guid: c638a6e64840e3640a8878898a43861d
   - enabled: 0
     path: Assets/hujinaga/Scene/stage1.unity
     guid: 019d62311791a6e4995036a9dde26f29

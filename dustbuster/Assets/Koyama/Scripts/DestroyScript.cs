@@ -22,7 +22,7 @@ public class DestroyScript : MonoBehaviour
         if (a >= 2)
         {
             Destroy(b);
-            Debug.Log("a");
+            //Debug.Log("a");
         }
     }
 }
