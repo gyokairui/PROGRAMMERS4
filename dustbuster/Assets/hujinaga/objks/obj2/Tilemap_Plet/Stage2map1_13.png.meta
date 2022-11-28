@@ -1,16 +1,7 @@
 fileFormatVersion: 2
-guid: 376b4164b58216a41a770285bf5f53ca
+guid: b434fe44e73ea064f8d4f8be851d0efc
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 856125142327006730
-    second: Stage2map1_10_0
-  - first:
-      213: -1972306204647535272
-    second: Stage2map1_10_1
-  - first:
-      213: 8522414952158797024
-    second: Stage2map1_10_2
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -55,7 +46,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 23
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -98,70 +89,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Stage2map1_10_0
-      rect:
-        serializedVersion: 2
-        x: 213
-        y: 704
-        width: 23
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a069eafe74191eb00800000000000000
-      internalID: 856125142327006730
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage2map1_10_1
-      rect:
-        serializedVersion: 2
-        x: 211
-        y: 672
-        width: 23
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 85d4fa3e4f5f0a4e0800000000000000
-      internalID: -1972306204647535272
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage2map1_10_2
-      rect:
-        serializedVersion: 2
-        x: 165
-        y: 736
-        width: 23
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ec17ebce33b54670800000000000000
-      internalID: 8522414952158797024
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
