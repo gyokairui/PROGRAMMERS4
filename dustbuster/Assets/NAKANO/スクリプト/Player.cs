@@ -21,12 +21,21 @@ public class Player : MonoBehaviour
     public static bool P_LevelUP = false;       //プレイヤーがレベルアップしたか
 
 
-    public static int now_stage_number = 0;     //現在プレイ中のステージ判定（１ならstage１、２ならstage２になる）
-    public static int stage_1Point = 15;        //ステージ1クリアに必要なポイント
-    public static int stage_2Point = 25;        //ステージ2クリアに必要なポイント
+    //ステージごとに異なる変数↓-------------------
+    public static int now_stage_number = 0;        //現在プレイ中のステージ判定（１ならstage１、２ならstage２になる）
 
-    public static int stage_1_LevelUP = 500;    //ステージ１でプレイヤーのレベルアップに必要なお金
-    public static int stage_2_LevelUP = 1000;   //ステージ２でプレイヤーのレベルアップに必要なお金
+    public static int stage_1_clearPoint = 15;     //ステージ1クリアに必要なポイント
+    public static int stage_1_MAXPoint = 20;       //ステージ1の落ちてるすべてのごみの量
+
+    public static int stage_2_clearPoint = 25;     //ステージ2クリアに必要なポイント
+    public static int stage_2_MAXPoint = 30;       //ステージ2の落ちてるすべてのごみの量
+
+    public static int stage_1_LevelUP = 500;       //ステージ１でプレイヤーのレベルアップに必要なお金
+    public static int stage_2_LevelUP = 600;       //ステージ２でプレイヤーのレベルアップに必要なお金
+
+    public static bool stage_1_clearFLG = false;   //ステージ1クリアフラグ
+    public static bool stage_2_clearFLG = false;   //ステージ2クリアフラグ
+    //------------------------------------------------
 
     //シーン関係------------------------------------------
     public string sceneName;    //ゲームオーバー
@@ -62,33 +71,62 @@ public class Player : MonoBehaviour
     {
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));//移動
 
+        if(now_stage_number==2)//ステージ２ならゴミ箱の容量を増やす
+        {
+            //スライダーの最大値の設定
+            slider2.maxValue = stage_2_MAXPoint;
+        }
 
+        //ノーマル状態------------------------------------------------------------------------
+        //ステージ1の場合
+        if (now_stage_number==1&&P_Money<stage_1_LevelUP && Score>=5)//プレイヤーの容量
+        {
+              DustFULL = true;//満タンフラグ
+        }
+        //レベルアップ状態
+        if (now_stage_number==1&&P_Money >= stage_1_LevelUP && Score >= 10)//プレイヤーの容量
+        {
+            DustFULL = true;//満タンフラグ
+        }
+
+        //ステージ2の場合
         //ノーマル状態
-        if(P_Money<stage_1_LevelUP && Score>=5)//プレイヤーの容量
+        if (now_stage_number == 2 && P_Money < stage_2_LevelUP && Score >= 5)//プレイヤーの容量
         {
-              DustFULL = true;//満タン
+            DustFULL = true;//満タンフラグ
         }
+        //レベルアップ状態
+        if (now_stage_number == 2 && P_Money >= stage_2_LevelUP && Score >= 15)//プレイヤーの容量
+        {
+            DustFULL = true;//満タンフラグ
+        }
+        //-----------------------------------------------------------------------------------
 
-        //レベルアップ状態
-        if (P_Money >= stage_1_LevelUP && Score >= 10)//プレイヤーの容量
-        {
-            DustFULL = true;//満タン
-        }
-    
-        //レベルアップ状態
-        if (P_Money>= stage_1_LevelUP)
+
+        //レベルアップする--------------------------------------------
+        //ステージ１の場合
+        if (now_stage_number==1&&P_Money>= stage_1_LevelUP)
         {
             moveSpeed = 15;//移動速度上昇
             //スライダーの最大値の設定
             slider.maxValue = 10;
         }
-
-        if (P_Money >= stage_1_LevelUP && P_LevelUP==false)
+        //ステージ２の場合
+        if (now_stage_number == 2 && P_Money >= stage_2_LevelUP)
         {
-            //満タン状態でレベルアップするとゴミが吸い込まれない不具合修正
+            moveSpeed = 20;//移動速度上昇
+            //スライダーの最大値の設定
+            slider.maxValue = 15;
+        }
+
+        //満タン状態でレベルアップするとゴミが吸い込まれない不具合修正
+        if (P_Money >= stage_1_LevelUP && P_LevelUP == false)
+        {
             P_LevelUP = true;
             DustFULL = false;
         }
+        //-----------------------------------------------------------------
+
 
         //   //プレイヤー変数リセット----------------------------------------
         if (P_HP <= 0)//ガムに3回当たるとゲームーオーバー
@@ -105,7 +143,7 @@ public class Player : MonoBehaviour
 
         if(now_stage_number==1)//ステージ1なら
         {
-            if (DustBOX >= 20)//20以上になると即クリア画面になる
+            if (DustBOX >= stage_1_MAXPoint)//20以上になると即クリア画面になる
             {
                 //プレイヤー変数リセット
                 Player_reset();
@@ -115,7 +153,7 @@ public class Player : MonoBehaviour
 
         if (now_stage_number == 2)//ステージ2なら
         {
-            if (DustBOX >= 30)//30以上になると即クリア画面になる
+            if (DustBOX >= stage_2_MAXPoint)//30以上になると即クリア画面になる
             {
                 //プレイヤー変数リセット
                 Player_reset();
@@ -157,6 +195,8 @@ public class Player : MonoBehaviour
         P_LevelUP = false;
     }
     //-----------------------------------------------------------------
+
+    //当たり判定-----------------------------------------------↓
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "dust" && DustFULL == false)//ゴミに当たると...
