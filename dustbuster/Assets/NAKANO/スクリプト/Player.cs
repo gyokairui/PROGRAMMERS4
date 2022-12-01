@@ -93,46 +93,36 @@ public class Player : MonoBehaviour
         //   //プレイヤー変数リセット----------------------------------------
         if (P_HP <= 0)//ガムに3回当たるとゲームーオーバー
         {
-            P_HP = 3;
-            DustBOX = 0;
-            Score = 0;
-            P_Money = 0;
-            moveSpeed = 10;
-            GameOver_flg = true;
-            DustFULL = false;
-            GameOver_flg = false;
-            P_LevelUP = false;
+            Player_reset();
             SceneManager.LoadScene(sceneName);
         }
         if (Input.GetKeyDown(KeyCode.R))//リスタートする
         {
             //プレイヤー変数リセット
-            P_HP = 3;
-            DustBOX = 0;
-            Score = 0;
-            P_Money = 0;
-            moveSpeed = 10;
-            GameOver_flg = true;
-            DustFULL = false;
-            GameOver_flg = false;
-            P_LevelUP = false;
+            Player_reset();
             SceneManager.LoadScene(sceneName2);
         }
 
-        if(DustBOX>=20)//20以上になると即クリア画面になる
+        if(now_stage_number==1)//ステージ1なら
         {
-            //プレイヤー変数リセット
-            P_HP = 3;
-            DustBOX = 0;
-            Score = 0;
-            P_Money = 0;
-            moveSpeed = 10;
-            GameOver_flg = true;
-            DustFULL = false;
-            GameOver_flg = false;
-            P_LevelUP = false;
-            SceneManager.LoadScene(sceneName3);     
+            if (DustBOX >= 20)//20以上になると即クリア画面になる
+            {
+                //プレイヤー変数リセット
+                Player_reset();
+                SceneManager.LoadScene(sceneName3);
+            }
         }
+
+        if (now_stage_number == 2)//ステージ2なら
+        {
+            if (DustBOX >= 30)//30以上になると即クリア画面になる
+            {
+                //プレイヤー変数リセット
+                Player_reset();
+                SceneManager.LoadScene(sceneName3);
+            }
+        }
+
         //-------------------------------------------------------------
 
 
@@ -147,12 +137,26 @@ public class Player : MonoBehaviour
         MovePlayer();//プレイヤーの移動
     }
 
+    //関数------------------------------------------------------------
     private void MovePlayer()//移動
     {
         rb.AddForce(movement.normalized * moveSpeed);//移動
     }
 
-  
+    public static void Player_reset() //プレイヤー変数リセット
+    {
+        //プレイヤー変数リセット
+        P_HP = 3;
+        DustBOX = 0;
+        Score = 0;
+        P_Money = 0;
+        moveSpeed = 10;
+        GameOver_flg = true;
+        DustFULL = false;
+        GameOver_flg = false;
+        P_LevelUP = false;
+    }
+    //-----------------------------------------------------------------
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "dust" && DustFULL == false)//ゴミに当たると...
