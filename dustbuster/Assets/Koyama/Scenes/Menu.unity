@@ -150,7 +150,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 177ed728b90b0b54cbb4745302bd0666, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.3
   m_Pitch: 1
@@ -536,7 +536,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXIT
+  m_text: TITLE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -759,7 +759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5a6ff33d26dcb4f8febe6fe41f60df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 2
+  sceneName: stage2
 --- !u!1 &313285576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5a6ff33d26dcb4f8febe6fe41f60df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: NAKANOScene
+  sceneName: NAKANOscene
 --- !u!1 &449435329
 GameObject:
   m_ObjectHideFlags: 0
