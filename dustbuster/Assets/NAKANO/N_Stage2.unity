@@ -5681,7 +5681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc67746f5b22b534c95d4ab76bb2b5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdown: 30
+  countdown: 60
   timeText: {fileID: 1709923702}
   SceneName1: GameOver
   SceneName2: GameClear
