@@ -14632,6 +14632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86af71e213b5dc143bd685fd254e2d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdown: 0
+  MoneyText: {fileID: 0}
   sceneName: GameOver
   sceneName2: NAKANOScene
   sceneName3: GameClear
@@ -15211,7 +15213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc67746f5b22b534c95d4ab76bb2b5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdown: 25
+  countdown: 60
   timeText: {fileID: 1709923702}
   SceneName1: GameOver
   SceneName2: GameClear

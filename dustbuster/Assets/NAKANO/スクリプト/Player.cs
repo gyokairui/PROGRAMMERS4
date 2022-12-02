@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         //c‚è‚Ì‚¨‹à‚ğ•\¦‚·‚é
-        MoneyText.text = countdown.ToString("f1") + "";
+        //MoneyText.text = countdown.ToString("f1") + "";
 
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));//ˆÚ“®
 
