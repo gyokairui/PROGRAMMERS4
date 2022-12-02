@@ -14639,7 +14639,7 @@ MonoBehaviour:
   slider2: {fileID: 154375455}
   sound1: {fileID: 0}
   sound2: {fileID: 8300000, guid: 94e6ad9942575d74fb3eecaa3439d15f, type: 3}
-  sound3: {fileID: 8300000, guid: 91f7c790ee717274f82273bc3a1b08f3, type: 3}
+  sound3: {fileID: 8300000, guid: f3faf993311656142b371dfe742bf614, type: 3}
   sound4: {fileID: 8300000, guid: 3f055edf73e2a524587e6c209440cf87, type: 3}
   sound5: {fileID: 8300000, guid: 6336f3ea52b6f9f448948ce649141f06, type: 3}
 --- !u!50 &2019916871
@@ -14676,7 +14676,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.1, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -14687,7 +14687,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6, y: 2.2}
+  m_Size: {x: 2.4, y: 2}
   m_EdgeRadius: 0
 --- !u!212 &2019916873
 SpriteRenderer:
@@ -14750,7 +14750,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 69ecec7fa72549d4ba4f32cedd7a781e, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.419
   m_Pitch: 1

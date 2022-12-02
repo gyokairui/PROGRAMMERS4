@@ -16,6 +16,7 @@ TagManager:
   - socks
   - arrow
   - Block
+  - Shop
   layers:
   - Default
   - TransparentFX

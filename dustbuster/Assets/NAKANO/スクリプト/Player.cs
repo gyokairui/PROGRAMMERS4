@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
     public static int stage_1_clearPoint = 15;     //ステージ1クリアに必要なポイント
     public static int stage_1_MAXPoint = 20;       //ステージ1の落ちてるすべてのごみの量
+    public static int stage_1_Money = 0;
 
     public static int stage_2_clearPoint = 25;     //ステージ2クリアに必要なポイント
     public static int stage_2_MAXPoint = 30;       //ステージ2の落ちてるすべてのごみの量
@@ -35,7 +36,13 @@ public class Player : MonoBehaviour
 
     public static bool stage_1_clearFLG = false;   //ステージ1クリアフラグ
     public static bool stage_2_clearFLG = false;   //ステージ2クリアフラグ
-    //------------------------------------------------
+                                                   //------------------------------------------------
+
+    //自販機表示
+    public int countdown = 0;
+
+    //時間を表示するText型の変数
+    public Text MoneyText;
 
     //シーン関係------------------------------------------
     public string sceneName;    //ゲームオーバー
@@ -65,10 +72,14 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         hpSlider = GetComponent<Slider>();
+        audioSource.PlayOneShot(sound3);
     }
 
     void Update()
     {
+        //残りのお金を表示する
+        MoneyText.text = countdown.ToString("f1") + "￥";
+
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));//移動
 
         if(now_stage_number==2)//ステージ２ならゴミ箱の容量を増やす
@@ -224,7 +235,7 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "Gamu")//ガムに当たると...
         {
-            P_Effect.Effect_flg = true;
+            P_Effect.Effect_flg = true;//プレイヤーの電撃effect付与
             audioSource.PlayOneShot(sound5);
             P_HP--;
             transform.DOShakeScale(
@@ -232,6 +243,12 @@ duration: 0.3f,   // 演出時間
 strength: 0.4f  // シェイクの強さ
 );
         }
+
+        if (collision.gameObject.tag == "Shop")//自販機に当たると...
+        {
+
+        }
+
 
         //お金ヒット↓------------------------------------------------------------
         if (collision.gameObject.tag == "10")//１０円に当たると...
