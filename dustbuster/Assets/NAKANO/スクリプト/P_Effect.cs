@@ -7,6 +7,7 @@ public class P_Effect : MonoBehaviour
     // Start is called before the first frame update
     public static bool Effect_flg=false;
 
+    bool LevelUP_flg = false;
     Animator anim;
     void Start()
     {
@@ -20,6 +21,19 @@ public class P_Effect : MonoBehaviour
         {
             anim.SetTrigger("biribiri");
             Effect_flg = false;
+        }
+
+
+        if (Player.now_stage_number == 1 && Player.P_Money >= Player.stage_1_LevelUP&&LevelUP_flg==false)
+        {
+            anim.SetTrigger("UP");
+            LevelUP_flg = true;
+        }
+        //ステージ２の場合
+        if (Player.now_stage_number == 2 && Player.P_Money >= Player.stage_2_LevelUP&&LevelUP_flg==false)
+        {
+            anim.SetTrigger("UP");
+            LevelUP_flg = true;
         }
     }
 
