@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Koyama/Scenes/Tutorial.unity
     guid: ad80062be3b1342438486971c69dae5f
   - enabled: 1
+    path: Assets/Koyama/Scenes/Explain.unity
+    guid: ba4c082943205a1489cebc28864435cf
+  - enabled: 1
     path: Assets/NAKANO/NAKANOScene.unity
     guid: 75fa2a1312d721c458bf68a64e993b26
   - enabled: 1
