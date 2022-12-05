@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 1704690021}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &55955923
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -385,7 +386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 365, y: 291}
+  m_AnchoredPosition: {x: 593, y: 467}
   m_SizeDelta: {x: 163.4675, y: 19.2729}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &154375455
@@ -741,6 +742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 110352614}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &224014495
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -803,6 +805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 1038314478}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &254589117
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -865,6 +868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 1847004396}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &256798025
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1049,6 +1053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 485120666}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &402927546
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1186,6 +1191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 483930902}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &453089422
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1248,6 +1254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 954514113}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &454262380
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1310,6 +1317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 1621249296}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &461305842
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2310,6 +2318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 1281872487}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &635403246
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2372,6 +2381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 997022293}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &761518776
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2847,6 +2857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 1232068708}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &978568454
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3512,6 +3523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 1019403354}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &1154800302
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3702,6 +3714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 1751814212}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &1195532979
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -15957,6 +15970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 611318995}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &1726259747
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16249,6 +16263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 1180969936}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &1774632256
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16594,6 +16609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 597710879}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &1872131650
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16656,6 +16672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 487299890}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &1877575905
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16699,7 +16716,7 @@ RectTransform:
   m_GameObject: {fileID: 1896069908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 154375454}
   m_RootOrder: 0
@@ -16793,6 +16810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 158237290}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &1948246557
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -17106,6 +17124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 165789441}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &2033146875
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -17266,8 +17285,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdown: 60
   timeText: {fileID: 1709923702}
-  sceneName1: 
-  sceneName2: GameOver
+  SceneName1: 
+  SceneName2: 
 --- !u!4 &2059219730
 Transform:
   m_ObjectHideFlags: 0
@@ -17328,6 +17347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustflag: 0
   objParent: {fileID: 508798635}
+  capsuleCollider2: {fileID: 0}
 --- !u!58 &2099094119
 CircleCollider2D:
   m_ObjectHideFlags: 0
