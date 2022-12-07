@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     public static bool DustFULL = false;　　    //掃除機の容量が満タンかどうか
     public static bool GameOver_flg = false;    //ゲームオーバーしているか
     public static bool P_LevelUP = false;       //プレイヤーがレベルアップしたか
-
+    public bool isDamage = false;               //ダメージeffect用
 
     //ステージごとに異なる変数↓-------------------
     public static int now_stage_number = 0;        //現在プレイ中のステージ判定（１ならstage１、２ならstage２になる）
@@ -52,11 +52,12 @@ public class Player : MonoBehaviour
     //ゲージ表示関係--------------
     public Slider slider;       //プレイヤーゲージ
     public Slider slider2;      //ゴミ箱ゲージ
-
+    public Image sliderImage;
     //----------------------------
 
     Slider hpSlider;
     private Rigidbody2D rb;
+    public SpriteRenderer sp;
     private Vector2 movement;
 
     //サウンド関係
@@ -77,6 +78,18 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (isDamage == true)
+        {
+            float level = Mathf.Abs(Mathf.Sin(Time.time * 40));
+            sp.color = new Color(1f, 1f, 1f, level);
+            StartCoroutine(OnDamage());
+        }
+
+        if (DustFULL == true)
+            sliderImage.color = new Color32(255, 0, 0, 255);
+        else
+            sliderImage.color = new Color32(0, 0, 255, 255);
+
         //残りのお金を表示する
         //MoneyText.text = countdown.ToString("f1") + "￥";
 
@@ -125,13 +138,19 @@ public class Player : MonoBehaviour
         //ステージ２の場合
         if (now_stage_number == 2 && P_Money >= stage_2_LevelUP)
         {
-            moveSpeed = 20;//移動速度上昇
+            moveSpeed = 17;//移動速度上昇
             //スライダーの最大値の設定
             slider.maxValue = 15;
         }
 
         //満タン状態でレベルアップするとゴミが吸い込まれない不具合修正
-        if (P_Money >= stage_1_LevelUP && P_LevelUP == false)
+        if (now_stage_number==1&&P_Money >= stage_1_LevelUP && P_LevelUP == false)
+        {
+            P_LevelUP = true;
+            DustFULL = false;
+        }
+
+        if (now_stage_number==2&& P_Money >= stage_2_LevelUP && P_LevelUP == false)
         {
             P_LevelUP = true;
             DustFULL = false;
@@ -205,6 +224,14 @@ public class Player : MonoBehaviour
         GameOver_flg = false;
         P_LevelUP = false;
     }
+
+    IEnumerator OnDamage()
+    {
+        yield return new WaitForSeconds(0.5f);//0.3秒点滅する
+                                               // 通常状態に戻す
+        isDamage = false;
+        sp.color = new Color(1f, 1f, 1f, 1f);
+    }
     //-----------------------------------------------------------------
 
     //当たり判定-----------------------------------------------↓
@@ -238,6 +265,7 @@ public class Player : MonoBehaviour
             P_Effect.Effect_flg = true;//プレイヤーの電撃effect付与
             audioSource.PlayOneShot(sound5);
             P_HP--;
+            isDamage = true;
             transform.DOShakeScale(
 duration: 0.3f,   // 演出時間
 strength: 0.4f  // シェイクの強さ
