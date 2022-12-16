@@ -52,7 +52,8 @@ public class Player : MonoBehaviour
     //ゲージ表示関係--------------
     public Slider slider;       //プレイヤーゲージ
     public Slider slider2;      //ゴミ箱ゲージ
-    public Image sliderImage;
+    public Image sliderImage; 
+    public Image sliderImage2; 
     //----------------------------
 
     Slider hpSlider;
@@ -89,6 +90,17 @@ public class Player : MonoBehaviour
             sliderImage.color = new Color32(255, 0, 0, 255);
         else
             sliderImage.color = new Color32(0, 0, 255, 255);
+
+        //クリアポイントを稼ぐとゲージの色が変わる
+        if (now_stage_number == 1 && stage_1_clearPoint <= DustBOX) 
+        {
+            sliderImage2.color = new Color32(255, 255, 0, 255);
+        }
+
+        if (now_stage_number == 2 && stage_2_clearPoint <= DustBOX) 
+        {
+            sliderImage2.color = new Color32(255, 255, 0, 255);
+        }
 
         //残りのお金を表示する
         //MoneyText.text = countdown.ToString("f1") + "￥";
@@ -131,14 +143,14 @@ public class Player : MonoBehaviour
         //ステージ１の場合
         if (now_stage_number==1&&P_Money>= stage_1_LevelUP)
         {
-            moveSpeed = 15;//移動速度上昇
+            moveSpeed = 14;//移動速度上昇
             //スライダーの最大値の設定
             slider.maxValue = 10;
         }
         //ステージ２の場合
         if (now_stage_number == 2 && P_Money >= stage_2_LevelUP)
         {
-            moveSpeed = 17;//移動速度上昇
+            moveSpeed = 15;//移動速度上昇
             //スライダーの最大値の設定
             slider.maxValue = 15;
         }
@@ -223,11 +235,12 @@ public class Player : MonoBehaviour
         DustFULL = false;
         GameOver_flg = false;
         P_LevelUP = false;
+        DOTween.Clear(true);
     }
 
     IEnumerator OnDamage()
     {
-        yield return new WaitForSeconds(0.5f);//0.3秒点滅する
+        yield return new WaitForSeconds(0.5f);//0.5秒点滅する
                                                // 通常状態に戻す
         isDamage = false;
         sp.color = new Color(1f, 1f, 1f, 1f);
@@ -245,7 +258,7 @@ public class Player : MonoBehaviour
                            //アイテムに触れると振動する
             transform.DOShakeScale(
               duration: 0.2f,   // 演出時間
-              strength: 0.2f  // シェイクの強さ
+              strength: 0.4f  // シェイクの強さ
                               );
         }
 
@@ -267,16 +280,10 @@ public class Player : MonoBehaviour
             P_HP--;
             isDamage = true;
             transform.DOShakeScale(
-duration: 0.3f,   // 演出時間
-strength: 0.4f  // シェイクの強さ
-);
+            duration: 0.3f,   // 演出時間
+            strength: 0.5f  // シェイクの強さ
+              );
         }
-
-        if (collision.gameObject.tag == "Shop")//自販機に当たると...
-        {
-
-        }
-
 
         //お金ヒット↓------------------------------------------------------------
         if (collision.gameObject.tag == "10")//１０円に当たると...

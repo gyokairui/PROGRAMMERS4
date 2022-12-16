@@ -230,6 +230,10 @@ PrefabInstance:
       propertyPath: sliderImage
       value: 
       objectReference: {fileID: 1223324237}
+    - target: {fileID: 4024242103258798685, guid: 734b40df8315eb54caf905d5cd2d96cb, type: 3}
+      propertyPath: sliderImage2
+      value: 
+      objectReference: {fileID: 673928928}
     - target: {fileID: 4024242103258798686, guid: 734b40df8315eb54caf905d5cd2d96cb, type: 3}
       propertyPath: m_Name
       value: Player
@@ -877,7 +881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.1901071, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.6431373, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

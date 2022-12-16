@@ -243,6 +243,10 @@ PrefabInstance:
       value: GameOver2
       objectReference: {fileID: 0}
     - target: {fileID: 4024242103258798685, guid: b3405d99edaaf7e4ba21571e9eece7f7, type: 3}
+      propertyPath: sceneName2
+      value: stage2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024242103258798685, guid: b3405d99edaaf7e4ba21571e9eece7f7, type: 3}
       propertyPath: sceneName3
       value: GameClear2
       objectReference: {fileID: 0}
@@ -250,6 +254,10 @@ PrefabInstance:
       propertyPath: sliderImage
       value: 
       objectReference: {fileID: 1365926456}
+    - target: {fileID: 4024242103258798685, guid: b3405d99edaaf7e4ba21571e9eece7f7, type: 3}
+      propertyPath: sliderImage2
+      value: 
+      objectReference: {fileID: 949744836}
     - target: {fileID: 4024242103258798686, guid: b3405d99edaaf7e4ba21571e9eece7f7, type: 3}
       propertyPath: m_Name
       value: Player
@@ -350,11 +358,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3629794025125776994, guid: 057ba65e7c892104baee54a54085462b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.9
+      value: 10.78
       objectReference: {fileID: 0}
     - target: {fileID: 3629794025125776994, guid: 057ba65e7c892104baee54a54085462b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.08
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 3629794025125776994, guid: 057ba65e7c892104baee54a54085462b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8840,7 +8848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.39658165, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.6431373, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
