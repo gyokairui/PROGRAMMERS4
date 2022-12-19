@@ -33,7 +33,7 @@ public class TimeManager : MonoBehaviour
         //ステータス初期化
         if (countdown <= 0)
         {
-            timeText.text = "タイムアップ";
+            //timeText.text = "タイムアップ";
 
             if (Player.now_stage_number==1)
             {
