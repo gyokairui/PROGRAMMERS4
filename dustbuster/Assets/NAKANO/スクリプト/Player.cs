@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public static bool GameOver_flg = false;    //ゲームオーバーしているか
     public static bool P_LevelUP = false;       //プレイヤーがレベルアップしたか
     public bool isDamage = false;               //ダメージeffect用
+    public static int Gameclearscore = 0;
 
     //ステージごとに異なる変数↓-------------------
     public static int now_stage_number = 0;        //現在プレイ中のステージ判定（１ならstage１、２ならstage２になる）
@@ -68,6 +69,7 @@ public class Player : MonoBehaviour
     public AudioClip sound3;
     public AudioClip sound4;
     public AudioClip sound5;
+    public AudioClip sound6;
 
     void Start()
     {
@@ -107,7 +109,17 @@ public class Player : MonoBehaviour
 
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));//移動
 
-        if(now_stage_number==2)//ステージ２ならゴミ箱の容量を増やす
+        if (Input.GetKey(KeyCode.LeftArrow))//移動方向に向く
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))//移動方向に向く
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+
+            if (now_stage_number==2)//ステージ２ならゴミ箱の容量を増やす
         {
             //スライダーの最大値の設定
             slider2.maxValue = stage_2_MAXPoint;
@@ -174,13 +186,15 @@ public class Player : MonoBehaviour
         if (P_HP <= 0)//ガムに3回当たるとゲームーオーバー
         {
             Player_reset();
-            SceneManager.LoadScene(sceneName);
+            //SceneManager.LoadScene(sceneName);
+            FadeManager.Instance.LoadScene(sceneName, 0.7f);
         }
         if (Input.GetKeyDown(KeyCode.R))//リスタートする
         {
             //プレイヤー変数リセット
             Player_reset();
-            SceneManager.LoadScene(sceneName2);
+            //SceneManager.LoadScene(sceneName2);
+            FadeManager.Instance.LoadScene(sceneName2, 0.7f);
         }
 
         if(now_stage_number==1)//ステージ1なら
@@ -189,7 +203,8 @@ public class Player : MonoBehaviour
             {
                 //プレイヤー変数リセット
                 Player_reset();
-                SceneManager.LoadScene(sceneName3);
+                //SceneManager.LoadScene(sceneName3);
+                FadeManager.Instance.LoadScene(sceneName3, 0.7f);
             }
         }
 
@@ -199,7 +214,8 @@ public class Player : MonoBehaviour
             {
                 //プレイヤー変数リセット
                 Player_reset();
-                SceneManager.LoadScene(sceneName3);
+                //SceneManager.LoadScene(sceneName3);
+                FadeManager.Instance.LoadScene(sceneName3, 0.7f);
             }
         }
 
@@ -221,6 +237,7 @@ public class Player : MonoBehaviour
     private void MovePlayer()//移動
     {
         rb.AddForce(movement.normalized * moveSpeed);//移動
+
     }
 
     public static void Player_reset() //プレイヤー変数リセット
@@ -260,6 +277,11 @@ public class Player : MonoBehaviour
               duration: 0.2f,   // 演出時間
               strength: 0.4f  // シェイクの強さ
                               );
+        }
+
+        if (collision.gameObject.tag == "dust" && DustFULL == true)//ゴミに当たると...
+        {
+            audioSource.PlayOneShot(sound6);
         }
 
         if (collision.gameObject.tag == "dustbox")//ゴミ箱に当たると...
