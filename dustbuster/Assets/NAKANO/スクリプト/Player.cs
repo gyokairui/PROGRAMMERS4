@@ -20,7 +20,12 @@ public class Player : MonoBehaviour
     public static bool GameOver_flg = false;    //ゲームオーバーしているか
     public static bool P_LevelUP = false;       //プレイヤーがレベルアップしたか
     public bool isDamage = false;               //ダメージeffect用
-    public static int Gameclearscore = 0;
+
+    //ランク付け用↓ーーーーーーーーーーーーーーーーーーーーーー
+    public static int Rank = 0;                  //回収したゴミの量でランク付けする　４０個でD　　
+    public static int Game_Clear_Score1 = 0;     //ゲームクリア後のランクつけ用　ステージ1
+    public static int Game_Clear_Score2 = 0;     //ゲームクリア後のランクつけ用　ステージ２
+
 
     //ステージごとに異なる変数↓-------------------
     public static int now_stage_number = 0;        //現在プレイ中のステージ判定（１ならstage１、２ならstage２になる）
@@ -29,8 +34,8 @@ public class Player : MonoBehaviour
     public static int stage_1_MAXPoint = 20;       //ステージ1の落ちてるすべてのごみの量
     public static int stage_1_Money = 0;
 
-    public static int stage_2_clearPoint = 25;     //ステージ2クリアに必要なポイント
-    public static int stage_2_MAXPoint = 30;       //ステージ2の落ちてるすべてのごみの量
+    public static int stage_2_clearPoint = 30;     //ステージ2クリアに必要なポイント
+    public static int stage_2_MAXPoint = 38;       //ステージ2の落ちてるすべてのごみの量
 
     public static int stage_1_LevelUP = 500;       //ステージ１でプレイヤーのレベルアップに必要なお金
     public static int stage_2_LevelUP = 600;       //ステージ２でプレイヤーのレベルアップに必要なお金
@@ -201,6 +206,8 @@ public class Player : MonoBehaviour
         {
             if (DustBOX >= stage_1_MAXPoint)//20以上になると即クリア画面になる
             {
+                Game_Clear_Score1 = DustBOX;
+                Debug.Log(Game_Clear_Score1);
                 //プレイヤー変数リセット
                 Player_reset();
                 //SceneManager.LoadScene(sceneName3);
@@ -210,12 +217,21 @@ public class Player : MonoBehaviour
 
         if (now_stage_number == 2)//ステージ2なら
         {
-            if (DustBOX >= stage_2_MAXPoint)//30以上になると即クリア画面になる
+            if (DustBOX >= stage_2_MAXPoint)//38以上になると即クリア画面になる
             {
+                Game_Clear_Score2 = DustBOX;
+                Debug.Log(Game_Clear_Score2);
                 //プレイヤー変数リセット
                 Player_reset();
                 //SceneManager.LoadScene(sceneName3);
                 FadeManager.Instance.LoadScene(sceneName3, 0.7f);
+
+                Rank += Game_Clear_Score1 + Game_Clear_Score2;
+
+                if(Rank>=50)
+                {
+                    Debug.Log(Rank);
+                }
             }
         }
 
@@ -279,7 +295,7 @@ public class Player : MonoBehaviour
                               );
         }
 
-        if (collision.gameObject.tag == "dust" && DustFULL == true)//ゴミに当たると...
+        if (collision.gameObject.tag == "dust" && DustFULL == true)//容量いっぱいでゴミに当たるとビープ音が鳴る
         {
             audioSource.PlayOneShot(sound6);
         }
@@ -312,7 +328,6 @@ public class Player : MonoBehaviour
         {
             P_Money += 10;
             audioSource.PlayOneShot(sound2);
-            Debug.Log(P_Money);//ポイントの表示
             transform.DOShakeScale(
     duration: 0.3f,   // 演出時間
     strength: 0.3f  // シェイクの強さ
@@ -322,7 +337,6 @@ public class Player : MonoBehaviour
         {
             P_Money += 100;
             audioSource.PlayOneShot(sound2);
-            Debug.Log(P_Money);//ポイントの表示
             transform.DOShakeScale(
    duration: 0.3f,   // 演出時間
    strength: 0.3f  // シェイクの強さ
@@ -332,7 +346,6 @@ public class Player : MonoBehaviour
         {
             P_Money += 500;
             audioSource.PlayOneShot(sound2);
-            Debug.Log(P_Money);//ポイントの表示
             transform.DOShakeScale(
    duration: 0.3f,   // 演出時間
    strength: 0.3f  // シェイクの強さ
