@@ -21,8 +21,8 @@ public class Player : MonoBehaviour
     public static bool P_LevelUP = false;       //プレイヤーがレベルアップしたか
     public bool isDamage = false;               //ダメージeffect用
 
-    //ランク付け用↓ーーーーーーーーーーーーーーーーーーーーーー
-    public static int Rank = 0;                  //回収したゴミの量でランク付けする　４０個でD　　
+    //ランク付け用↓ーーーーーーーーーーーーーーーーーーーーーー　ゴミの数→MAX58
+    public static int Rank = 0;                  //回収したゴミの量でランク付けする　４５個でE　５０個でB　５５個A　５８個でS　
     public static int Game_Clear_Score1 = 0;     //ゲームクリア後のランクつけ用　ステージ1
     public static int Game_Clear_Score2 = 0;     //ゲームクリア後のランクつけ用　ステージ２
 
@@ -114,12 +114,12 @@ public class Player : MonoBehaviour
 
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));//移動
 
-        if (Input.GetKey(KeyCode.LeftArrow))//移動方向に向く
+        if (Input.GetKey(KeyCode.LeftArrow)|| Input.GetKey(KeyCode.A))//移動方向に向く
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))//移動方向に向く
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))//移動方向に向く
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
@@ -207,7 +207,7 @@ public class Player : MonoBehaviour
             if (DustBOX >= stage_1_MAXPoint)//20以上になると即クリア画面になる
             {
                 Game_Clear_Score1 = DustBOX;
-                Debug.Log(Game_Clear_Score1);
+                Debug.Log("ステージ1   "+Game_Clear_Score1);
                 //プレイヤー変数リセット
                 Player_reset();
                 //SceneManager.LoadScene(sceneName3);
@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
             if (DustBOX >= stage_2_MAXPoint)//38以上になると即クリア画面になる
             {
                 Game_Clear_Score2 = DustBOX;
-                Debug.Log(Game_Clear_Score2);
+                Debug.Log("ステージ2   " + Game_Clear_Score2);
                 //プレイヤー変数リセット
                 Player_reset();
                 //SceneManager.LoadScene(sceneName3);
@@ -228,9 +228,21 @@ public class Player : MonoBehaviour
 
                 Rank += Game_Clear_Score1 + Game_Clear_Score2;
 
-                if(Rank>=50)
+                if(Rank>=45&&50>Rank)
                 {
-                    Debug.Log(Rank);
+                    Debug.Log("E");
+                }
+                if (Rank >= 50&&55>Rank)
+                {
+                    Debug.Log("B");
+                }
+                if (Rank >= 55&&58>Rank)
+                {
+                    Debug.Log("A");
+                }
+                if (Rank >= 58)
+                {
+                    Debug.Log("S");
                 }
             }
         }

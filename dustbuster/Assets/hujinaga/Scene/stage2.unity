@@ -235,6 +235,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4024242103258798685, guid: b3405d99edaaf7e4ba21571e9eece7f7, type: 3}
+      propertyPath: sound6
+      value: 
+      objectReference: {fileID: 8300000, guid: 75a1075d333a5ab47bba829e24da8afe, type: 3}
+    - target: {fileID: 4024242103258798685, guid: b3405d99edaaf7e4ba21571e9eece7f7, type: 3}
       propertyPath: slider2
       value: 
       objectReference: {fileID: 1611250180}
