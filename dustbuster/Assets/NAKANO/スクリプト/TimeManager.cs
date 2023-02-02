@@ -40,6 +40,7 @@ public class TimeManager : MonoBehaviour
                 //ステージ１の場合
                 if (Player.DustBOX >= Player.stage_1_clearPoint)//ゴミが一定以上あるとクリア
                 {
+                    Player.Game_Clear_Score1 = Player.DustBOX;
                     Player.Player_reset();//プレイヤー変数リセット
                     SceneManager.LoadScene(SceneName2);
                 }
@@ -56,8 +57,28 @@ public class TimeManager : MonoBehaviour
                 //ステージ１の場合
                 if (Player.DustBOX >= Player.stage_2_clearPoint)//ゴミが一定以上あるとクリア
                 {
+                    Player.Game_Clear_Score2 = Player.DustBOX;
                     Player.Player_reset();//プレイヤー変数リセット
                     SceneManager.LoadScene(SceneName2);
+
+                    Player.Rank += Player.Game_Clear_Score1 + Player.Game_Clear_Score2;
+
+                    if (Player.Rank >= 45 && 50 > Player.Rank)
+                    {
+                        Debug.Log("E");
+                    }
+                    if (Player.Rank >= 50 && 55 > Player.Rank)
+                    {
+                        Debug.Log("B");
+                    }
+                    if (Player.Rank >= 55 && 58 > Player.Rank)
+                    {
+                        Debug.Log("A");
+                    }
+                    if (Player.Rank >= 58)
+                    {
+                        Debug.Log("S");
+                    }
                 }
                 //ゴミが一定以上無いとゲームオーバー
                 else
