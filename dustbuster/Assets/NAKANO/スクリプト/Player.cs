@@ -86,6 +86,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(Rank);
+
         if (isDamage == true)
         {
             float level = Mathf.Abs(Mathf.Sin(Time.time * 40));
@@ -226,7 +228,7 @@ public class Player : MonoBehaviour
                 SceneManager.LoadScene(sceneName3);
                 //FadeManager.Instance.LoadScene(sceneName3, 0.7f);
 
-                Rank += Game_Clear_Score1 + Game_Clear_Score2;
+                Rank = Game_Clear_Score1 + Game_Clear_Score2;
 
                 if(Rank>=45&&50>Rank)
                 {
