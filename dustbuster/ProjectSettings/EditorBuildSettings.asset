@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Koyama/Scenes/Menu.unity
     guid: c638a6e64840e3640a8878898a43861d
   - enabled: 1
-    path: Assets/Koyama/Scenes/Tutorial.unity
-    guid: ad80062be3b1342438486971c69dae5f
-  - enabled: 1
     path: Assets/Koyama/Scenes/Explain.unity
     guid: ba4c082943205a1489cebc28864435cf
   - enabled: 1
@@ -35,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Koyama/Scenes/GameClear2.unity
     guid: cdb17b5a769d3554386f0387d4c046b2
+  - enabled: 1
+    path: Assets/NAKANO/GameClear2 1.unity
+    guid: a624c64e8c37aa845a675c7510255362
   m_configObjects: {}

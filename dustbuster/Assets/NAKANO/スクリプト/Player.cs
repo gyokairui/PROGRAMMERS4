@@ -191,15 +191,15 @@ public class Player : MonoBehaviour
         if (P_HP <= 0)//ガムに3回当たるとゲームーオーバー
         {
             Player_reset();
-            //SceneManager.LoadScene(sceneName);
-            FadeManager.Instance.LoadScene(sceneName, 0.7f);
+            SceneManager.LoadScene(sceneName);
+            //FadeManager.Instance.LoadScene(sceneName, 0.7f);
         }
         if (Input.GetKeyDown(KeyCode.R))//リスタートする
         {
             //プレイヤー変数リセット
             Player_reset();
-            //SceneManager.LoadScene(sceneName2);
-            FadeManager.Instance.LoadScene(sceneName2, 0.7f);
+            SceneManager.LoadScene(sceneName2);
+            //FadeManager.Instance.LoadScene(sceneName2, 0.7f);
         }
 
         if(now_stage_number==1)//ステージ1なら
@@ -210,8 +210,8 @@ public class Player : MonoBehaviour
                 Debug.Log("ステージ1   "+Game_Clear_Score1);
                 //プレイヤー変数リセット
                 Player_reset();
-                //SceneManager.LoadScene(sceneName3);
-                FadeManager.Instance.LoadScene(sceneName3, 0.7f);
+                SceneManager.LoadScene(sceneName3);
+                //FadeManager.Instance.LoadScene(sceneName3, 0.7f);
             }
         }
 
@@ -223,8 +223,8 @@ public class Player : MonoBehaviour
                 Debug.Log("ステージ2   " + Game_Clear_Score2);
                 //プレイヤー変数リセット
                 Player_reset();
-                //SceneManager.LoadScene(sceneName3);
-                FadeManager.Instance.LoadScene(sceneName3, 0.7f);
+                SceneManager.LoadScene(sceneName3);
+                //FadeManager.Instance.LoadScene(sceneName3, 0.7f);
 
                 Rank += Game_Clear_Score1 + Game_Clear_Score2;
 
